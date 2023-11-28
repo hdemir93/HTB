@@ -68,4 +68,10 @@ Ayrıca, daha sonraki bir bölümde tartışacağımız gibi, tehlikeye atılmı
 
 Gördüğümüz gibi, 22 numaralı port bize SSH'ın üzerinde çalıştığını belirten banner'ını gönderdi. Bu tekniğe Banner Grabbing denir ve belirli bir portta hangi hizmetin çalıştığını belirlemeye yardımcı olabilir. Netcat çoğu Linux dağıtımında önceden yüklenmiş olarak gelir. Windows makineler için de bu bağlantıdan bir kopyasını indirebiliriz. PowerShell'de kodlanmış netcat'in PowerCat adında başka bir Windows alternatifi daha vardır. Netcat, daha sonra tartışacağımız gibi, makineler arasında dosya aktarmak için de kullanılabilir.
 
-Bir başka benzer ağ yardımcı programı, netcat'in desteklemediği portları yönlendirme ve seri cihazlara bağlanma gibi birkaç özelliğe sahip olan socat'tır. Socat ayrıca bir kabuğu tamamen etkileşimli bir TTY'ye yükseltmek için de kullanılabilir. Bunun birkaç örneğini daha sonraki bir bölümde göreceğiz. Socat, her sızma testçisinin araç setinin bir parçası olması gereken çok kullanışlı bir yardımcı programdır. Socat'ın bağımsız bir ikilisi, daha kararlı bir ters kabuk bağlantısı elde etmek için uzaktan kod yürütme elde edildikten sonra bir sisteme aktarılabilir.
+Bir başka benzer ağ yardımcı programı, netcat'in desteklemediği portları yönlendirme ve seri cihazlara bağlanma gibi birkaç özelliğe sahip olan socat'tır. Socat ayrıca bir kabuğu tamamen etkileşimli bir TTY'ye yükseltmek için de kullanılabilir. Bunun birkaç örneğini daha sonraki bir bölümde göreceğiz. Socat, her sızma testçisinin araç setinin bir parçası olması gereken çok kullanışlı bir yardımcı programdır. Socat'ın standalone binary'si, daha kararlı bir ters kabuk bağlantısı elde etmek için uzaktan kod yürütme elde edildikten sonra bir sisteme aktarılabilir.
+
+3. Tmux : tmux kullanımı ile ilgili;
+    - https://www.youtube.com/watch?v=Lqehvpe_djs&ab_channel=IppSec
+
+4. Vim : Vim ile ilgili cheat sheet;
+    - https://vimsheet.com/
