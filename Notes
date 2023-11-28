@@ -22,4 +22,50 @@ Nmap tarafından taranan ilk 100 hizmet ve Nmap'te en iyi 1000 TCP ve UDP portla
     - https://nullsec.us/top-1-000-tcp-and-udp-ports-nmap-default/
 
 
-commit from Mac.
+OWASP(Open Web Application Security Project) tarafından tutulan ilk 10 web uygulaması güvenlik açığı:
+     - https://owasp.org/www-project-top-ten/
+
+
+    1. Broken acces control : Kullanıcıların diğer kullanıcıların hesaplarına erişmesini, hassas verileri görüntülemesini, yetkisiz işlevlere erişmesini, verileri değiştirmesini vb. önlemek için kısıtlamalar uygun şekilde uygulanmamaktadır.
+    
+    2. Cryptographic failures : Genellikle hassas verilerin açığa çıkmasına veya sistemin tehlikeye girmesine neden olan kriptografi ile ilgili hatalar.
+
+    3. Injection : Kullanıcı tarafından sağlanan veriler uygulama tarafından doğrulanmaz, filtrelenmez veya sterilize edilmez. Bazı enjeksiyon örnekleri SQL enjeksiyonu, komut enjeksiyonu, LDAP enjeksiyonu vb.dir.
+
+    4. Insecure design : Bu sorunlar, uygulama güvenlik göz önünde bulundurularak tasarlanmadığında ortaya çıkar.
+
+    5. Security Misconfiguration : Uygulama yığınının herhangi bir bölümünde uygun güvenlik sağlamlaştırmasının olmaması, güvensiz varsayılan yapılandırmalar, açık bulut depolama, çok fazla bilgi ifşa eden ayrıntılı hata mesajları.
+
+    6. Vulnerable and Outdated Components : Güvenlik açığı olan, desteklenmeyen veya güncel olmayan bileşenlerin (hem istemci tarafı hem de sunucu tarafı) kullanılması.
+
+    7. Indentification and Authentication failures : Kullanıcının kimliğini, kimlik doğrulamasını ve oturum yönetimini hedef alan kimlik doğrulama ile ilgili saldırılar.
+
+    8. Software and Data Integrity failures : Yazılım ve veri bütünlüğü hataları, bütünlük ihlallerine karşı koruma sağlamayan kod ve altyapı ile ilgilidir. Bunun bir örneği, bir uygulamanın güvenilmeyen kaynaklardan, depolardan ve içerik dağıtım ağlarından (CDN'ler - content delivery networks) gelen eklentilere, kütüphanelere veya modüllere dayanmasıdır.
+
+    9. Security Logging and Monitoring failures : Bu kategori, aktif ihlallerin tespit edilmesine, artırılmasına ve bunlara yanıt verilmesine yardımcı olmak içindir. Günlük kaydı ve izleme olmadan ihlaller tespit edilemez...
+
+    10. Server Side Request Forgery(Sunucu tarafı istek sahteciliği) :  SSRF kusurları, bir web uygulaması kullanıcı tarafından sağlanan URL'yi doğrulamadan uzak bir kaynağı getirdiğinde ortaya çıkar. Bir saldırganın, bir güvenlik duvarı, VPN veya başka bir tür ağ erişim kontrol listesi (ACL) ile korunsa bile, uygulamayı beklenmedik bir hedefe hazırlanmış bir istek göndermeye zorlamasına olanak tanır.
+
+
+
+Basic Tools
+
+
+1. SSH : Secure Shell (SSH) varsayılan olarak 22 numaralı bağlantı noktasında çalışan ve sistem yöneticileri gibi kullanıcılara bir bilgisayara uzaktan erişmek için güvenli bir yol sağlayan bir ağ protokolüdür. SSH, bir SSH genel/özel anahtar çifti kullanılarak genel anahtar kimlik doğrulaması kullanılarak parola kimlik doğrulaması ile veya parolasız olarak yapılandırılabilir. SSH aynı ağdaki sistemlere internet üzerinden uzaktan erişmek, port yönlendirme/proxy kullanarak diğer ağlardaki kaynaklara bağlantıları kolaylaştırmak ve uzak sistemlere dosya yüklemek/indirmek için kullanılabilir. 
+
+SSH, OpenSSH gibi bir SSH istemci uygulaması çalıştıran bir kullanıcıyı bir SSH sunucusuna bağlayan bir istemci-sunucu modeli kullanır. Bir kutuya saldırırken veya gerçek dünya değerlendirmesi sırasında, genellikle SSH aracılığıyla bir sisteme doğrudan bağlanmak için kullanılabilecek açık metin kimlik bilgilerini veya bir SSH özel anahtarını elde ederiz. Bir SSH bağlantısı genellikle bir ters kabuk bağlantısından çok daha kararlıdır ve genellikle ağdaki diğer ana bilgisayarları numaralandırmak ve bunlara saldırmak, araçları aktarmak, kalıcılığı ayarlamak vb. için bir "atlama ana bilgisayarı" olarak kullanılabilir. Bir dizi kimlik bilgisi elde edersek, aşağıdaki gibi kullanıcı adı @ uzak sunucu IP'sini kullanarak sunucuya uzaktan giriş yapmak için SSH'yi kullanabiliriz: 
+    
+    3buh4mz4@htb[/htb]$ ssh Bob@10.10.10.10
+    Bob@remotehost's password: *********
+    Bob@remotehost#
+
+Ayrıca, daha sonraki bir bölümde tartışacağımız gibi, tehlikeye atılmış bir sistemdeki yerel özel anahtarları okumak veya belirli bir kullanıcıya SSH erişimi sağlamak için ortak anahtarımızı eklemek de mümkündür. Gördüğümüz gibi, SSH uzaktaki bir makineye güvenli bir şekilde bağlanmak için mükemmel bir araçtır. Ayrıca uzak makinedeki yerel bağlantı noktalarını localhost'umuzla eşleştirmek için bir yol sağlar, bu da zaman zaman kullanışlı olabilir.
+
+2. Netcat : Netcat, ncat veya nc, TCP/UDP portları ile etkileşim için mükemmel bir ağ yardımcı programıdır. Bir pentest sırasında birçok şey için kullanılabilir. Birincil kullanımı, bu modülde daha sonra tartışacağımız kabuklara bağlanmaktır. Buna ek olarak, netcat herhangi bir dinleme portuna bağlanmak ve o portta çalışan servisle etkileşime geçmek için kullanılabilir. Örneğin, SSH tüm verileri ve anahtarları göndermek için 22 numaralı bağlantı noktası üzerinden bağlantıları işlemek üzere programlanmıştır. TCP port 22'ye netcat ile bağlanabiliriz:
+
+    3buh4mz4@htb[/htb]$ netcat 10.10.10.10 22
+    SSH-2.0-OpenSSH_8.4p1 Debian-3
+
+Gördüğümüz gibi, 22 numaralı port bize SSH'ın üzerinde çalıştığını belirten banner'ını gönderdi. Bu tekniğe Banner Grabbing denir ve belirli bir portta hangi hizmetin çalıştığını belirlemeye yardımcı olabilir. Netcat çoğu Linux dağıtımında önceden yüklenmiş olarak gelir. Windows makineler için de bu bağlantıdan bir kopyasını indirebiliriz. PowerShell'de kodlanmış netcat'in PowerCat adında başka bir Windows alternatifi daha vardır. Netcat, daha sonra tartışacağımız gibi, makineler arasında dosya aktarmak için de kullanılabilir.
+
+Bir başka benzer ağ yardımcı programı, netcat'in desteklemediği portları yönlendirme ve seri cihazlara bağlanma gibi birkaç özelliğe sahip olan socat'tır. Socat ayrıca bir kabuğu tamamen etkileşimli bir TTY'ye yükseltmek için de kullanılabilir. Bunun birkaç örneğini daha sonraki bir bölümde göreceğiz. Socat, her sızma testçisinin araç setinin bir parçası olması gereken çok kullanışlı bir yardımcı programdır. Socat'ın bağımsız bir ikilisi, daha kararlı bir ters kabuk bağlantısı elde etmek için uzaktan kod yürütme elde edildikten sonra bir sisteme aktarılabilir.
